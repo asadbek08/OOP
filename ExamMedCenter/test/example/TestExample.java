@@ -68,46 +68,47 @@ public class TestExample {
 		
 		// // R3 : booking appointments
 		
-		// String ssn = "GVNBNC80B14F219K";
-		// String a1 = mgr.setAppointment(ssn,"Giovanni","Bianchi",code,"2023-06-28","10:40-11:00");
-		// String a2 = mgr.setAppointment("LRARSS87G64A341J","Laura","Rossi",code,"2023-06-28","10:00-10:20");
+		String ssn = "GVNBNC80B14F219K";
+		String a1 = mgr.setAppointment(ssn,"Giovanni","Bianchi",code,"2023-06-28","10:40-11:00");
+		String a2 = mgr.setAppointment("LRARSS87G64A341J","Laura","Rossi",code,"2023-06-28","10:00-10:20");
 		
-		// assertEquals(code, mgr.getAppointmentDoctor(a1));
-		// assertEquals(ssn, mgr.getAppointmentPatient(a1));
-		// assertEquals("10:40", mgr.getAppointmentTime(a1));
-		// assertEquals("2023-06-28", mgr.getAppointmentDate(a2));
+		assertEquals(code, mgr.getAppointmentDoctor(a1));
+		assertEquals(ssn, mgr.getAppointmentPatient(a1));
+		assertEquals("10:40", mgr.getAppointmentTime(a1));
+		assertEquals("2023-06-28", mgr.getAppointmentDate(a2));
 		
-		// Collection<String> appointments = mgr.listAppointments(code,"2023-06-28");
-		// assertNotNull(appointments);
-		// assertEquals(2,appointments.size());
-		// assertTrue(appointments.contains("10:40="+ssn));
+		Collection<String> appointments = mgr.listAppointments(code,"2023-06-28");
+		assertNotNull(appointments);
+		assertEquals(2,appointments.size());
+//		assertEquals("10:40="+ssn,appointments);
+		assertTrue(appointments.contains("10:40="+ssn));
 		
 		
 		// // R4 : welcome patients
 		
-		// int numApps = mgr.setCurrentDate("2023-06-28");
-		// assertEquals(2, numApps);
+		int numApps = mgr.setCurrentDate("2023-06-28");
+		assertEquals(2, numApps);
 		
-		// mgr.accept(ssn);
+		mgr.accept(ssn);
 		
-		// String nextApp = mgr.nextAppointment(code);
-		// assertNotNull(nextApp);
-		// assertEquals(a1,nextApp);
+		String nextApp = mgr.nextAppointment(code);
+		assertNotNull(nextApp);
+		assertEquals(a1,nextApp);
 		
-		// mgr.completeAppointment(code,nextApp);
+		mgr.completeAppointment(code,nextApp);
 		
-		// assertNull(mgr.nextAppointment(code));
+		assertNull(mgr.nextAppointment(code));
 		
 		
-		// // R5 : stats
+		// R5 : stats
 		
-		// double noShow = mgr.showRate(code, "2023-06-28");
-		// assertEquals(0.5, noShow, 0.001);
+		double noShow = mgr.showRate(code, "2023-06-28");
+		assertEquals(0.5, noShow, 0.001);
 		
-		// Map<String,Double> completeness = mgr.scheduleCompleteness();
-		// assertNotNull(completeness);
-		// assertEquals(3,completeness.size());
-		// assertEquals(2.0/15.0, completeness.get(code), 0.001);
+		Map<String,Double> completeness = mgr.scheduleCompleteness();
+		assertNotNull(completeness);
+		assertEquals(3,completeness.size());
+		assertEquals(2.0/15.0, completeness.get(code), 0.001);
 		
 	}
 		

@@ -2,6 +2,7 @@ package it.polito.med;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -14,6 +15,8 @@ public class MedManager {
 	private Map<String, Set<String>>  specs = new HashMap<>();
 	private Map<String, Doctor> docs = new HashMap<>();
 	private Map<String, Appointment> apps = new HashMap<>();
+	private int appCounter;
+	private String currentDate;
 	
 	/**
 	 * add a set of medical specialities to the list of specialities
@@ -173,7 +176,8 @@ public class MedManager {
 		if(doc==null){
 			throw new MedException();
 		}
-		Appointment app = new Appointment(ssn, name, surname, code, date, slot);
+		String AppId = "APP"+(++appCounter);
+		Appointment app = new Appointment(AppId, ssn, name, surname, code, date, slot);
 		apps.put(app.appID(), app);
 
 		return app.appID();
@@ -247,6 +251,7 @@ public class MedManager {
 	 * @return the number of total appointments for the day
 	 */
 	public int setCurrentDate(String date) {
+		currentDate = date;
 		return apps.values().stream()
 			.filter(x-> x.getDate().equals(date))
 			.collect(Collectors.toSet()).size();
@@ -274,7 +279,18 @@ public class MedManager {
 	 * @return appointment id
 	 */
 	public String nextAppointment(String code) {
-		return null;
+		Set<Appointment> app=  apps.values().stream()
+			.filter(x -> x.getDocId().equals(code))
+			.filter(Appointment::getStat)
+			.filter(x -> !x.getStatComp())
+			.sorted(Comparator.comparing(Appointment::toString))
+			.collect(Collectors.toSet());
+		if(app==null|| app.isEmpty()){
+			return null;
+		}
+		return app.stream()
+			.map(Appointment::appID)
+			.collect(Collectors.toList()).get(0);
 	}
 
 	/**
@@ -290,7 +306,24 @@ public class MedManager {
 	 * 						or appointment not for the current day
 	 */
 	public void completeAppointment(String code, String appId)  throws MedException {
+		Doctor doc = docs.get(code);
+		if(doc==null){
+			throw new MedException();
+		}
+		Appointment app = apps.get(appId);
+		if(app==null){
+			throw new MedException();
+		}
 
+		if(!app.getDocId().equals(code)){
+			throw new MedException();
+		}
+
+		if(!app.getStat()||!app.getDate().equals(currentDate)){
+			throw new MedException();
+		}
+
+		app.setStatCompleted();
 	}
 
 	/**
@@ -302,7 +335,15 @@ public class MedManager {
 	 * @return	no show rate
 	 */
 	public double showRate(String code, String date) {
-		return -1.0;
+		return (double)apps.values().stream()
+			.filter(x -> x.getDate().equals(date))
+			.filter(x -> x.getDocId().equals(code))
+			.filter(Appointment::getStat)
+			.collect(Collectors.toList()).size()/
+			apps.values().stream()
+			.filter(x -> x.getDate().equals(date))
+			.filter(x -> x.getDocId().equals(code))
+			.collect(Collectors.toList()).size();
 	}
 
 	/**
@@ -314,7 +355,17 @@ public class MedManager {
 	 * @return the map id : completeness
 	 */
 	public Map<String, Double> scheduleCompleteness() {
-		return null;
+		Map<String, Double> completeness = new HashMap<>();
+
+		for (Doctor doc : docs.values()){
+			int numSlots = doc.numberOfSlots();
+			int numberOfAppointments = apps.values().stream()
+						.filter(x->x.getDocId().equals(doc.getId()))
+						.collect(Collectors.toList()).size();
+			double complete = (double) numberOfAppointments/numSlots;
+			completeness.put(doc.getId(), complete);
+		}
+		return completeness;
 	}
 
 

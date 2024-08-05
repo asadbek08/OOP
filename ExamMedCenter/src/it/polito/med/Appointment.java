@@ -20,21 +20,23 @@ public class Appointment {
     private String code;
     private String date;
     private String slot;
-    private int counter = 0;
+
     private boolean Accepted=false;
-    public Appointment(String ssn, String name, String surname, String code, String date, String slot){
-        
+    private boolean Completed=false;
+    public Appointment(String ID,String ssn, String name, String surname, String code, String date, String slot){
+        this.ID = ID;
         this.ssn = ssn;
         this.code = code;
         this.name = name;
         this.surname = surname;
         this.date = date;
         this.slot = slot;
-        this.counter++;
+     
+
     }
 
     public String appID(){
-        this.ID = this.counter + "";
+
 
         return this.ID;
     }
@@ -56,7 +58,7 @@ public class Appointment {
     }
     
     public String toString(){
-        return this.slot+"="+this.ssn;
+        return this.slot.split("-")[0]+"="+this.ssn;
     }
 
     public boolean getStat(){
@@ -66,5 +68,14 @@ public class Appointment {
     public void setStatAccepted(){
         this.Accepted = true;
     }
+
+    public boolean getStatComp(){
+        return this.Completed;
+    }
+    public void setStatCompleted(){
+        this.Completed = true;
+    }
+
+    
 
 }

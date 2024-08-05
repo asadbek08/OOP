@@ -33,6 +33,10 @@ public class Doctor {
         return dailyslots.get(date);
     }
 
+    public String getId(){
+        return this.id;
+    }
+
     public void addSlot(String date, String start, String end){
         
         
@@ -43,8 +47,15 @@ public class Doctor {
         }else{
             dailyslots.get(date).add(start+"-"+end);
         }
-        
+   
+    }
 
-        
+    public int numberOfSlots(){
+        int counter =0;
+        for(Map.Entry<String, List<String>> entry : dailyslots.entrySet() ){
+            List<String> values = entry.getValue();
+            counter = counter + values.size();
+        }
+        return counter;        
     }
 }
