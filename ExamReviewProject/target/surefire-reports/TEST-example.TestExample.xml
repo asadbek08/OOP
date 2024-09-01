@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="example.TestExample" time="0.792" tests="1" errors="0" skipped="0" failures="1">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/mnt/c/Users/asad1/OneDrive/Desktop/exam-20240125-project-review/target/test-classes:/mnt/c/Users/asad1/OneDrive/Desktop/exam-20240125-project-review/target/classes:/home/asadbek/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/asadbek/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
+    <property name="java.vm.vendor" value="Ubuntu"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://ubuntu.com/"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
+    <property name="sun.java.command" value="/mnt/c/Users/asad1/OneDrive/Desktop/exam-20240125-project-review/target/surefire/surefirebooter4381934484633120318.jar /mnt/c/Users/asad1/OneDrive/Desktop/exam-20240125-project-review/target/surefire 2024-08-31T14-26-03_971-jvmRun1 surefire6296247829591114776tmp surefire_011096667753622094705tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/mnt/c/Users/asad1/OneDrive/Desktop/exam-20240125-project-review/target/test-classes:/mnt/c/Users/asad1/OneDrive/Desktop/exam-20240125-project-review/target/classes:/home/asadbek/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/asadbek/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/asadbek"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-07-16"/>
+    <property name="java.home" value="/usr/lib/jvm/java-17-openjdk-amd64"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/mnt/c/Users/asad1/OneDrive/Desktop/exam-20240125-project-review"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/mnt/c/Users/asad1/OneDrive/Desktop/exam-20240125-project-review/target/surefire/surefirebooter4381934484633120318.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.12+7-Ubuntu-1ubuntu222.04"/>
+    <property name="user.name" value="asadbek"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="5.15.153.1-microsoft-standard-WSL2"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/asadbek/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugs.launchpad.net/ubuntu/+source/openjdk-17"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="17.0.12"/>
+    <property name="user.dir" value="/mnt/c/Users/asad1/OneDrive/Desktop/exam-20240125-project-review"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Ubuntu"/>
+    <property name="java.vm.version" value="17.0.12+7-Ubuntu-1ubuntu222.04"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="testAll" classname="example.TestExample" time="0.186">
+    <failure message="Overlapping slots should fail: expected it.polito.project.ReviewException to be thrown, but nothing was thrown" type="java.lang.AssertionError">java.lang.AssertionError: Overlapping slots should fail: expected it.polito.project.ReviewException to be thrown, but nothing was thrown
+	at example.TestExample.testAll(TestExample.java:58)
+</failure>
+  </testcase>
+</testsuite>

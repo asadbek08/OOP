@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: example.TestExample
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.792 s <<< FAILURE! - in example.TestExample
+testAll(example.TestExample)  Time elapsed: 0.186 s  <<< FAILURE!
+java.lang.AssertionError: Overlapping slots should fail: expected it.polito.project.ReviewException to be thrown, but nothing was thrown
+	at example.TestExample.testAll(TestExample.java:58)
+
